@@ -21,7 +21,7 @@ class CreateAniumusTable extends Migration
             $table->text('description');
             $table->timestamp('release_date');
             $table->string('image', 200);
-            $table->string('slug', 300)
+            $table->string('slug', 300);
         });
     }
 

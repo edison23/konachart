@@ -16,6 +16,7 @@ class CreateSeasonsTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->string('name');
+            $table->boolean('published');
             $table->string('slug');
         });
     }
