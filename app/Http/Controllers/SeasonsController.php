@@ -74,9 +74,9 @@ class SeasonsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug)
     {
-        $season = Season::where('slug', $id)->first();
+        $season = Season::where('slug', $slug)->first();
         $animus = $season->animus;
         return view('admin.editSeason', with([
             'animus' => $animus,
@@ -91,9 +91,13 @@ class SeasonsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $slug)
     {
-        return $request->all();
+        $season = Season::all()->where('slug', $slug)->first();
+        $input = $request->all();
+        $input['slug'] = str_slug($input['name']); //TODO uniq slugs
+        $season->update($input);
+        return redirect('/season/'. $input['slug'] .'/edit');
     }
 
     /**
@@ -109,10 +113,10 @@ class SeasonsController extends Controller
 
     public function addAnimu($slug)
     {
-        $season = Season::where('slug', $slug)->first();
-        return view('admin.addAnimu', with([
-            'season' => $season,
-            ]));
+        // $season = Season::where('slug', $slug)->first();
+        // return view('admin.addAnimu', with([
+        //     'season' => $season,
+        //     ]));
     }
 
     public function storeAnimu(Request $request, $slug)

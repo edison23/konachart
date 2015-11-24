@@ -16,10 +16,12 @@
 // Route::get('/season/{slug}', 'SeasonsController@show');
 
 Route::resource('season', 'SeasonsController');
+Route::resource('animu', 'AnimusController');
+
+Route::get('season/{slug}/add', 'AnimusController@create');
+// Route::get('season/{slug}/storeAnimu', 'SeasonsController@storeAnimu');
+
+// Route::get('animu/{slug}/edit', 'AnimusController@edit');
+// Route::patch('animu/{slug}', 'AnimusController@update');
 
 Route::get('/admin', 'AdminController@show');
-
-Route::get('/season/{id}/addAnimu', 'SeasonsController@addAnimu');
-Route::get('/season/{id}/editAnimu', 'SeasonsController@editAnimu');
-Route::post('/season/{slug}', 'SeasonsController@storeAnimu');
-Route::patch('/season/{slug}', 'SeasonsController@updateAnimu');

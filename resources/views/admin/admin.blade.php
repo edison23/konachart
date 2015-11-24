@@ -5,7 +5,7 @@
 
 	<body>
 		<div class="header">
-			<a href="/admin">Edit seasons</a>
+			<a href="/admin">Seasons</a>
 			|| a tady treba useri a logout
 		</div>
 

@@ -1,19 +1,8 @@
 @extends('admin.admin')
 
 @section('content')
-	{!! Form::open(array('url' => '/season/'. $season->slug, 'method' => 'post')) !!}
-		{!! Form::label('Jmeno') !!}
-		{!! Form::text('title', null) !!}
-
-		{!! Form::label('Studio') !!}
-		{!! Form::text('studio', null) !!}
-
-		{!! Form::label('Popis') !!}
-		{!! Form::text('description', null) !!}
-
-		{!! Form::label('Obrazek') !!}
-		{!! Form::text('image', null) !!}
-
-		{!! Form::submit('Save') !!}
+<h1>Add animu</h1>
+	{!! Form::open(array('action' => ['AnimusController@store', $season->slug], 'method' => 'post')) !!}
+		@include('admin.animuForm')
 	{!! Form::close() !!}
 @stop
