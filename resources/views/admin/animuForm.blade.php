@@ -1,9 +1,6 @@
 {!! Form::label('Jmeno') !!}
 {!! Form::text('title', null) !!}
 
-{!! Form::label('Serie') !!}
-{!! Form::text('season_id', null) !!}
-
 {!! Form::label('Studio') !!}
 {!! Form::text('studio', null) !!}
 

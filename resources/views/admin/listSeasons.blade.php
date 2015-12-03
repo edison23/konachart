@@ -3,9 +3,6 @@
 @section('content')
 	veci k uprave:<br>
 	@foreach ($seasons as $season)
-		<a href="/season/{{ $season->slug }}/edit">{{ $season->name }}</a> 
+		<a href="/season/{{ $season->id }}/edit">{{ $season->name }}</a>
 	@endforeach
 @stop
-
-
-

@@ -18,8 +18,8 @@ class Animu extends Model
 
     protected $dates = ['release_date'];
 
-    // public function season()
-    // {
-    // 	return $this->belongsTo('App\Season');
-    // }
+    public function season()
+    {
+    	return $this->belongsTo('App\Season');
+    }
 }

@@ -40,11 +40,15 @@ class AnimusController extends Controller
      */
     public function store(Request $request)
     {
-        $animu = new Animu;
-        $input = $request->all();
-        $input['slug'] = str_slug($input['title']);
-        Animu::create($input);
-        return redirect('/animu/'. $input['slug'] .'/edit');
+        $animu = new Animu($request->all());
+        $season = new Season;
+
+        $season = Season::all()->where('id', $animu->season_id)->first();
+        $animu->slug = str_slug($animu->title);
+        $animu->season()->associate($season);
+        $animu->save();
+        return redirect(action('AnimusController@edit', $animu->id));
+        // return redirect('/animu/'. $animu->id .'/edit');
     }
 
     /**
@@ -64,9 +68,9 @@ class AnimusController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($slug)
+    public function edit($id)
     {
-        $animu = Animu::all()->where('slug', $slug)->first();
+        $animu = Animu::all()->where('id', $id)->first();
         return view('admin.editAnimu', with([
             'animu' => $animu
             ])
@@ -80,13 +84,14 @@ class AnimusController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $slug)
+    public function update(Request $request, $id)
     {
-        $animu = Animu::all()->where('slug', $slug)->first();
+        $animu = Animu::all()->where('id', $id)->first();
         $input = $request->all();
         $input['slug'] = str_slug($input['title']);
         $animu->update($input);
-        return redirect('/animu/'. $input['slug'] .'/edit');
+        // return redirect('/animu/'. $input['id'] .'/edit');
+        return redirect(action('AnimusController@edit', $animu->id));
 
     }
 
@@ -98,7 +103,7 @@ class AnimusController extends Controller
      */
     public function destroy($id)
     {
-        //
+        dd($id);
     }
 
 }
