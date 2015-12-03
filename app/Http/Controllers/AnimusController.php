@@ -23,10 +23,10 @@ class AnimusController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($slug)
+    public function create($id)
     {
-        $season = Season::all()->where('slug', $slug)->first();
-        return view('admin.addAnimu', with([
+        $season = Season::find($id);
+        return view('admin.createAnimu', with([
             'season' => $season,
             ])
         );
@@ -43,7 +43,7 @@ class AnimusController extends Controller
         $animu = new Animu($request->all());
         $season = new Season;
 
-        $season = Season::all()->where('id', $animu->season_id)->first();
+        $season = Season::find($animu->season_id);
         $animu->slug = str_slug($animu->title);
         $animu->season()->associate($season);
         $animu->save();
@@ -103,7 +103,10 @@ class AnimusController extends Controller
      */
     public function destroy($id)
     {
-        dd($id);
+        $animu = Animu::find($id); //is this safe?
+        $season = $animu->season;
+        $animu->delete();
+        return redirect(action('SeasonsController@edit', $season->id));
     }
 
 }

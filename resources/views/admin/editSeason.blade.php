@@ -14,12 +14,11 @@
 				<!-- <div class="img"><img src="{{ $animu->img }}"></div>
 				<div class="description">{{ $animu->description }}</div> -->
 				<a href="/animu/{{ $animu->id }}/edit">Edit</a>
-				{!! Form::open(['action' => ['AnimusController@destroy', $animu->id], 'method' => 'delete']) !!}
-					{!! Form::submit('Smazat') !!}
-				{!! Form::close() !!}
+				<a href="/animu/{{ $animu->id }}/destroy">Delete</a>
 			</div>
 		@endforeach
 	</div>
 
-	<a href="/season/{{ $season->slug }}/add">Add animu to this season</a>
+	<a href="/season/{{ $season->id }}/create">Add animu to this season</a>
+	<a href="/season/{{ $season->id }}/destroy">Delete this seasons</a>
 @stop

@@ -15,13 +15,25 @@
 // Route::get('/season/create', 'SeasonsController@create');
 // Route::get('/season/{slug}', 'SeasonsController@show');
 
-Route::resource('season', 'SeasonsController');
-Route::resource('animu', 'AnimusController');
+// Route::resource('season', 'SeasonsController');
+// Route::resource('animu', 'AnimusController');
 
-Route::get('season/{slug}/add', 'AnimusController@create');
+// Route::get('season/{slug}/add', 'AnimusController@create');
 // Route::get('season/{slug}/storeAnimu', 'SeasonsController@storeAnimu');
 
 // Route::get('animu/{slug}/edit', 'AnimusController@edit');
 // Route::patch('animu/{slug}', 'AnimusController@update');
 
 Route::get('/admin', 'AdminController@show');
+
+Route::get('/season/create', 'SeasonsController@create');
+Route::post('/season', 'SeasonsController@store');
+Route::get('/season/{id}/edit', 'SeasonsController@edit');
+Route::patch('/season/{id}', 'SeasonsController@update');
+Route::get('/season/{id}/destroy', 'SeasonsController@destroy');
+
+Route::get('/season/{id}/create', 'AnimusController@create');
+Route::post('/animu', 'AnimusController@store');
+Route::get('/animu/{id}/edit', 'AnimusController@edit');
+Route::patch('/animu/{id}', 'AnimusController@update');
+Route::get('/animu/{id}/destroy', 'AnimusController@destroy');

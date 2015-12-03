@@ -47,6 +47,7 @@ class SeasonsController extends Controller
         $input = $request->all();
         $input['slug'] = str_slug($input['name']); // TODO: uniq slugs
         Season::create($input);
+        return redirect(action('AdminController@show'));
 
     }
 
@@ -109,13 +110,15 @@ class SeasonsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $season = Season::find($id);
+        $season->delete();
+        return redirect(action('AdminController@show'));
     }
 
-    public function addAnimu($slug)
+    public function createAnimu($slug)
     {
         // $season = Season::where('slug', $slug)->first();
-        // return view('admin.addAnimu', with([
+        // return view('admin.createAnimu', with([
         //     'season' => $season,
         //     ]));
     }
