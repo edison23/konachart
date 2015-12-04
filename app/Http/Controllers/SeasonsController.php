@@ -46,6 +46,7 @@ class SeasonsController extends Controller
     {
         $input = $request->all();
         $input['slug'] = str_slug($input['name']); // TODO: uniq slugs
+        $input['published'] = $request->input('published', false);
         Season::create($input);
         return redirect(action('AdminController@show'));
 
@@ -97,6 +98,7 @@ class SeasonsController extends Controller
         $season = Season::all()->where('id', $id)->first();
         $input = $request->all();
         $input['slug'] = str_slug($input['name']); //TODO uniq slugs
+        $input['published'] = $request->input('published', false);
         $season->update($input);
         return redirect(action('SeasonsController@edit', $season->id));
         // return redirect('/season/'. $input['slug'] .'/edit');
