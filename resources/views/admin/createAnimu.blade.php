@@ -1,4 +1,4 @@
-@extends('admin.admin')
+@extends('admin.master')
 
 @section('content')
 <h1>Přidat animu</h1>

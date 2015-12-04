@@ -12,11 +12,11 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
-    {
-        $seasons = \App\Season::all();
-        View::share('seasons', $seasons);
-    }
+    // public function boot()
+    // {
+    //     $seasons = \App\Season::all();
+    //     View::share('seasons', $seasons);
+    // }
 
     /**
      * Register any application services.

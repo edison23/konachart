@@ -5,8 +5,8 @@
 
 	<body>
 		<div class="header">
-			<a href="/admin">Seasons</a>
-			|| a tady treba useri a logout
+			<a href="/seasons">Seasons</a>
+			|| <a href="/users">Users</a>
 		</div>
 
 		<div class="content">

@@ -24,8 +24,7 @@
 // Route::get('animu/{slug}/edit', 'AnimusController@edit');
 // Route::patch('animu/{slug}', 'AnimusController@update');
 
-Route::get('/admin', 'AdminController@show');
-
+Route::get('/seasons', 'SeasonsController@index');
 Route::get('/season/create', 'SeasonsController@create');
 Route::post('/season', 'SeasonsController@store');
 Route::get('/season/{id}/edit', 'SeasonsController@edit');

@@ -18,11 +18,9 @@ class SeasonsController extends Controller
      */
     public function index()
     {
-        $current = Season::all()->last();
-        $latestAnimus = $current->animus;
-        return view('public.season', with([
-            'animus' => $latestAnimus,
-            'current' => $current,
+        $seasons = Season::all();
+        return view('admin.listSeasons', with([
+            'seasons' => $seasons,
             ]));
     }
 
