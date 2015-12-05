@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 
 use App\Animu;
 use App\Season;
+use App\LinkedSite;
 
 class AnimusController extends Controller
 {
@@ -25,9 +26,15 @@ class AnimusController extends Controller
      */
     public function create($id)
     {
-        $season = Season::find($id);
+        // $season = Season::find($id);
+        $sites_dik = LinkedSite::all();
+        $sites = [];
+        foreach ($sites_dik as $site) {
+            $sites[$site['id']] = $site['name'];
+        };
         return view('admin.createAnimu', with([
-            'season' => $season,
+            'season_id' => $id,
+            'sites' => $sites
             ])
         );
     }
@@ -40,8 +47,10 @@ class AnimusController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request->link);
         $animu = new Animu($request->all());
         $season = new Season;
+        // $link = new Link($request-);
 
         $season = Season::find($animu->season_id);
         $animu->slug = str_slug($animu->title);

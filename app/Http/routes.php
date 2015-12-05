@@ -36,3 +36,7 @@ Route::post('/animu', 'AnimusController@store');
 Route::get('/animu/{id}/edit', 'AnimusController@edit');
 Route::patch('/animu/{id}', 'AnimusController@update');
 Route::get('/animu/{id}/destroy', 'AnimusController@destroy');
+
+Route::get('/linkedSite/create', 'LinkedSiteController@create');
+Route::get('/linkedSites', 'LinkedSiteController@index');
+Route::post('/linkedSite', 'LinkedSiteController@store');

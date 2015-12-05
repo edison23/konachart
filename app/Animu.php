@@ -22,4 +22,9 @@ class Animu extends Model
     {
     	return $this->belongsTo('App\Season');
     }
+
+    public function links()
+    {
+        return $this->hasMany('App\Link');
+    }
 }
