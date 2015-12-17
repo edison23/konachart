@@ -19,6 +19,11 @@ class Link extends Model
         return $this->belongsTo('App\Animu');
     }
 
+    public function site()
+    {
+        return $this->hasOne('App\LinkedSite');
+    }
+
     // public function site()
     // {
     //     return $this->belongsTo('App\LinkedSite', 'id', 'site_id');

@@ -25,11 +25,11 @@ class CreateLinksTable extends Migration
                 ->on('animus');
         });
 
-        // Schema::table('links', function (Blueprint $table) {
-        //     $table->foreign('site_id')
-        //         ->references('id')
-        //         ->on('linkedSites');
-        // });
+        Schema::table('links', function (Blueprint $table) {
+            $table->foreign('site_id')
+                ->references('id')
+                ->on('linkedSites');
+        });
     }
 
     /**
